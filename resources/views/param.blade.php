@@ -4,4 +4,3 @@
     <a href="{{route('teste')}}">Teste</a> <br>
     <a href="{{route('teste.param')}}">Param</a> <br>
 </div>
-    

@@ -13,16 +13,16 @@
 
 use Illuminate\Http\Request;
 
-Route::get('/', function () {
+Route::get('/', static function () {
     return view('welcome');
 });
 
-Route::prefix('/teste')->group(function() {
-    Route::get('/', function () {
+Route::prefix('/teste')->group(static function () {
+    Route::get('/', static function () {
         return view('teste');
     })->name('teste');
 
-    Route::get('param/{nome?}', function ($nome = null) {
+    Route::get('param/{nome?}', static function ($nome = null) {
         return view('param');
     })->name('teste.param');
 });
@@ -30,20 +30,25 @@ Route::prefix('/teste')->group(function() {
 
 Route::redirect('novoteste', 'teste', 301);
 
-Route::get('novoteste2', function () {
+Route::get('novoteste2', static function () {
     return redirect()->route('teste.param');
 });
 
-Route::get('parametro/{nome?}', function ($nome = null) {
+Route::get('parametro/{nome?}', static function ($nome = null) {
     if (isset($nome)) {
         return "Olá $nome, seja bem vindo";
     }
 
-    return "Nenhum parametro informado";
+    return 'Nenhum parametro informado';
 })->where('nome', '[A-Za-z]*');
 
 ///////////////////////////
 
-Route::post('/requisicoes', function (Request $req) {
+Route::post('/requisicoes', static function (Request $req) {
     return 'POST';
 });
+
+///////////////////////////
+Route::get('/lista', 'MeuControlador@lista');
+Route::get('/multiplicar/{n1}/{n2}', 'MeuControlador@multiplicar')->where('n1', '(\d)+')->where('n2', '(\d)+');
+
