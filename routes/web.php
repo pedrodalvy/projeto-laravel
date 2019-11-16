@@ -52,3 +52,6 @@ Route::post('/requisicoes', static function (Request $req) {
 Route::get('/lista', 'MeuControlador@lista');
 Route::get('/multiplicar/{n1}/{n2}', 'MeuControlador@multiplicar')->where('n1', '(\d)+')->where('n2', '(\d)+');
 
+
+//////////////////////////
+Route::resource('clientes', 'ClienteControlador');
