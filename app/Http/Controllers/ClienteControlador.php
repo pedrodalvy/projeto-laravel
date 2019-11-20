@@ -70,7 +70,8 @@ class ClienteControlador extends Controller
         $clientes = session('clientes');
         $index = $this->getIndex($id, $clientes);
         $cliente = $clientes[$index];
-        return view('clientes.info', compact('cliente'));
+        return view('clientes.info')->with('cliente', $cliente);
+        //return view('clientes.info', compact('cliente'));
     }
 
     /**

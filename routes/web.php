@@ -55,3 +55,9 @@ Route::get('/multiplicar/{n1}/{n2}', 'MeuControlador@multiplicar')->where('n1', 
 
 //////////////////////////
 Route::resource('clientes', 'ClienteControlador');
+Route::get('produtos', function () {
+    return view('outros.produtos');
+})->name('produtos');
+Route::get('departamentos', function () {
+    return view('outros.departamentos');
+})->name('departamentos');
